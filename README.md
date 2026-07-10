@@ -28,17 +28,17 @@ Dimensionality reduction is fundamental to applied spatial data analysis, conden
 ├── AE_outputs/               # model outputs (NOT in git — created by notebooks 2*/scripts)
 ├── torchgeodemo/             # vendored autoencoder package (exact version used for the paper)
 └── notebooks/
-    ├── 1_preparedata.ipynb
-    ├── 2_ae_retraining_stability.ipynb
-    ├── 2c_ae_retraining_stability_identity.ipynb
-    ├── 2f_ae_retraining_stability_lad_blocked.ipynb
+    ├── 1_prepare_data.ipynb
+    ├── 2a_train_ae_stability.ipynb
+    ├── 2b_identity_ae_control.ipynb
+    ├── 2c_lad_blocked_cv.ipynb
     ├── run_lad_spcv.py / run_lad_parallel.sh
     ├── make_pca_reconstructions.py
-    ├── 3_ploterror_vs_dim_500ep.ipynb
-    ├── 3e_cv_generalisation_table.ipynb
-    ├── 4_spatial_autocorrelation_stability_500ep.ipynb
-    ├── 5_error_by_geo_500ep_linscaling.ipynb
-    ├── 6a…6d_geodemographic_clustering_*.ipynb
+    ├── 3_rmse_vs_dimension.ipynb
+    ├── 4_cv_generalisation_table.ipynb
+    ├── 5_spatial_autocorrelation.ipynb
+    ├── 6_error_by_geography.ipynb
+    ├── 7a…7d clustering notebooks
     ├── tables/               # shipped reference outputs (Table 3, CV RMSE)
     ├── clustering_results/   # shipped reference outputs (Section 5)
     └── plots/                # figures written here when notebooks run (not in git)
@@ -88,32 +88,32 @@ The actively maintained release of this package is **deepgeodemo**: [https://dee
 |---|---|
 | `OAC_assignment.csv`, `OAC_cats.csv` | [Output Area Classification 2021](https://data.geods.ac.uk/dataset/output-area-classification-2021) |
 
-`data/cache/` is created automatically (spatial weights matrix, plotting caches) the first time notebook 4/5 runs.
+`data/cache/` is created automatically (spatial weights matrix, plotting caches) the first time notebook 5 or 6 runs.
 
 ## Reproducing the paper
 
-Run the notebooks in numeric order from the `notebooks/` directory. Stages 2 and 2f train models and are GPU-intensive; everything else runs in minutes from their saved outputs.
+Run the notebooks in numeric order from the `notebooks/` directory. The stage-2 notebooks (2a–2c) train models and are GPU-intensive; everything else runs in minutes from their saved outputs.
 
 | Step | What it does | Paper output | Runtime (approx.) |
 |---|---|---|---|
-| `1_preparedata.ipynb` | Cleans and scales the raw census tables to the 408-variable model input | — | minutes |
-| `2_ae_retraining_stability.ipynb` | Trains the AE at 8 latent dimensionalities × 10 random seeds (500 epochs) | training-stability claims (§2.2), inputs to Fig 2 | ~8 dims × 10 runs × ~10 min on GPU (~1 day serial) |
-| `make_pca_reconstructions.py` | Fits PCA once and writes per-dimensionality baseline reconstructions | PCA baseline used by notebooks 3, 4, 5 | ~30 min, ~12 GB output |
+| `1_prepare_data.ipynb` | Cleans and scales the raw census tables to the 408-variable model input | — | minutes |
+| `2a_train_ae_stability.ipynb` | Trains the AE at 8 latent dimensionalities × 10 random seeds (500 epochs) | training-stability claims (§2.2), inputs to Fig 2 | ~8 dims × 10 runs × ~10 min on GPU (~1 day serial) |
+| `2b_identity_ae_control.ipynb` | Identity-activation (linear) AE control | robustness check (not a paper figure) | as notebook 2a |
 | `run_lad_parallel.sh` → `run_lad_spcv.py` | 5-fold LAD-blocked spatial CV of the AE (whole Local Authority Districts held out); parallel launcher over (dim, repeat) pairs | §3.1 | ~11 h serial; ~30–60 min parallel on a large GPU |
-| `2f_ae_retraining_stability_lad_blocked.ipynb` | Builds folds, PCA CV comparator, and aggregates the spatial-CV results | §3.1 | minutes (after the script) |
-| `2c_ae_retraining_stability_identity.ipynb` | Identity-activation (linear) AE control | robustness check (not a paper figure) | as notebook 2 |
-| `3_ploterror_vs_dim_500ep.ipynb` | RMSE vs latent dimensionality, AE vs PCA | **Figure 2** | minutes |
-| `3e_cv_generalisation_table.ipynb` | Train vs held-out RMSE table from the LAD-blocked CV | **Table 3 (§3.1)** | minutes |
-| `4_spatial_autocorrelation_stability_500ep.ipynb` | Global Moran's I of reconstruction errors (queen contiguity) | **Table 3 (Moran's I)** | ~1 h first run (builds weights cache), then minutes |
-| `5_error_by_geo_500ep_linscaling.ipynb` | Error by IMD/density decile, by OAC group; exports per-OA/MSOA error data for mapping | **Figures 3, 4**; data behind **Figure 5** | ~30 min uncached |
-| `6a_geodemographic_clustering_median_500ep.ipynb` | k-means (k=8, 10,000 inits) on the 100-d AE latent space and PCA comparator | clustering used in §5 | ~1 h |
-| `6b_geodemographic_qualmetricsmaps_500ep.ipynb` | Cluster quality metrics and regional maps | §5.3 metrics | minutes |
-| `6c_geodemographic_clustering_pub_plots_500ep.ipynb` | Publication cluster maps and OAC cross-tabulation | **Figures 6, 7** | minutes |
-| `6d_geodemographic_clustering_with_decoding_500ep.ipynb` | Decodes cluster centroids back to census variables | §5.4 | minutes |
+| `2c_lad_blocked_cv.ipynb` | Builds folds, PCA CV comparator, and aggregates the spatial-CV results | §3.1 | minutes (after the script) |
+| `make_pca_reconstructions.py` | Fits PCA once and writes per-dimensionality baseline reconstructions | PCA baseline used by notebooks 3, 5, 6 | ~30 min, ~12 GB output |
+| `3_rmse_vs_dimension.ipynb` | RMSE vs latent dimensionality, AE vs PCA | **Figure 2** | minutes |
+| `4_cv_generalisation_table.ipynb` | Train vs held-out RMSE table from the LAD-blocked CV | **Table 3 (§3.1)** | minutes |
+| `5_spatial_autocorrelation.ipynb` | Global Moran's I of reconstruction errors (queen contiguity) | **Table 3 (Moran's I)** | ~1 h first run (builds weights cache), then minutes |
+| `6_error_by_geography.ipynb` | Error by IMD/density decile, by OAC group; exports per-OA/MSOA error data for mapping | **Figures 3, 4**; data behind **Figure 5** | ~30 min uncached |
+| `7a_geodemographic_clustering.ipynb` | k-means (k=8, 10,000 inits) on the 100-d AE latent space and PCA comparator | clustering used in §5 | ~1 h |
+| `7b_clustering_quality_maps.ipynb` | Cluster quality metrics and regional maps | §5.3 metrics | minutes |
+| `7c_clustering_pub_plots.ipynb` | Publication cluster maps and OAC cross-tabulation | **Figures 6, 7** | minutes |
+| `7d_clustering_decoding.ipynb` | Decodes cluster centroids back to census variables | §5.4 | minutes |
 
 Figures are written to `notebooks/plots/` (publication versions in `plots/pub_plots/`), tables to `notebooks/tables/`, clustering outputs to `notebooks/clustering_results/`.
 
-**Figure 5** (MSOA reconstruction-error choropleths) is not drawn by a notebook: notebook 5 exports `plots/maps/500ep_linscaling_run5_error_diff_by_MSOA_100d.parquet`, from which the published maps were styled in GIS software.
+**Figure 5** (MSOA reconstruction-error choropleths) is not drawn by a notebook: notebook 6 exports `plots/maps/500ep_linscaling_run5_error_diff_by_MSOA_100d.parquet`, from which the published maps were styled in GIS software.
 
 ### Reference outputs
 

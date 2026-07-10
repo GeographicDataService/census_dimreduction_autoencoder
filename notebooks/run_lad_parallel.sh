@@ -32,5 +32,5 @@ done | xargs -P "$PAR" -I{} bash -c '
   fi
 '
 
-echo "All workers finished. Now run notebook 2f cells from the aggregation section down"
+echo "All workers finished. Now run notebook 2c_lad_blocked_cv cells from the aggregation section down"
 echo "(they load the checkpoints in AE_outputs/.../lad_blocked and build the summary + plots)."

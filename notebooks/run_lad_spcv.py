@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Parallel worker for the LAD-grouped spatial CV (notebook 2f).
+Parallel worker for the LAD-grouped spatial CV (notebook 2c, 2c_lad_blocked_cv).
 
 Trains the autoencoder for a SINGLE (bottleneck_dim, repeat) pair and writes the
 same per-(dim, repeat) checkpoint the notebook produces, so the notebook's
@@ -41,9 +41,9 @@ LAD_LOOKUP  = ROOT / ("data/geofiles/Output_Area_to_Lower_layer_Super_Output_Are
                       "to_Middle_layer_Super_Output_Area_to_Local_Authority_District_"
                       "(December_2021)_Lookup_in_England_and_Wales_v3.csv")
 
-# --- Constants (must match notebook 2f) --------------------------------------
+# --- Constants (must match notebook 2c) --------------------------------------
 # LAD_SPCV_EPOCHS env var overrides epochs for smoke-testing only; leave unset
-# for real runs so results match notebook 2f (500 epochs).
+# for real runs so results match notebook 2c (500 epochs).
 N_EPOCHS       = int(os.environ.get("LAD_SPCV_EPOCHS", 500))
 BATCH_SIZE     = 0.01
 SCALING_TYPE   = "lin"
@@ -66,7 +66,7 @@ def gen_layer_sizes(input_size, latent_size, num_layers, scaling_type="lin"):
 
 
 def build_lad_folds(oa_lad, lad_oa_counts, n_folds, seed):
-    """Greedy balanced bin-packing of whole LADs into n_folds (matches 2f)."""
+    """Greedy balanced bin-packing of whole LADs into n_folds (matches notebook 2c)."""
     rng = np.random.default_rng(seed)
     lads = lad_oa_counts.index.to_numpy()
     lads = lads[rng.permutation(len(lads))]
