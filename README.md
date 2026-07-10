@@ -26,6 +26,7 @@ Dimensionality reduction is fundamental to applied spatial data analysis, conden
 │   ├── OAC/                  #   2021 Output Area Classification
 │   └── cache/                #   auto-regenerated caches (spatial weights etc.)
 ├── AE_outputs/               # model outputs (NOT in git — created by notebooks 2*/scripts)
+├── torchgeodemo/             # vendored autoencoder package (exact version used for the paper)
 └── notebooks/
     ├── 1_preparedata.ipynb
     ├── 2_ae_retraining_stability.ipynb
@@ -45,16 +46,21 @@ Dimensionality reduction is fundamental to applied spatial data analysis, conden
 
 ## Installation
 
-Python 3.12 with CUDA-enabled PyTorch (wheels pinned to the CUDA 12.8 index). The autoencoder implementation lives in the separate `torchgeodemo` package, referenced as a **sibling directory**:
+Python 3.12 with CUDA-enabled PyTorch (wheels pinned to the CUDA 12.8 index).
 
 ```bash
-git clone git@github.com:sdesabbata/torchgeodemo-pkg-dev.git   # sibling of this repo
 git clone <this repo> AE_CDR
 cd AE_CDR
 uv sync          # creates .venv from uv.lock (exact paper environment)
 ```
 
-Without uv: create a venv and `pip install -r requirements.txt` plus `pip install -e ../torchgeodemo-pkg-dev`.
+Without uv: create a venv and `pip install -r requirements.txt` (which installs the vendored autoencoder package from `./torchgeodemo`).
+
+### The `torchgeodemo` autoencoder package
+
+The autoencoder implementation lives in the `torchgeodemo` package. A copy of the package source is vendored in this repository at [`torchgeodemo/`](torchgeodemo/) — **this is the exact version (0.0.4) used to produce the results in the paper**, and it is what `uv sync` / `requirements.txt` install. It is included so the results remain reproducible independently of upstream development.
+
+The actively maintained release of this package is **deepgeodemo**: [https://deepgeodemo.readthedocs.io/en/latest/](https://deepgeodemo.readthedocs.io/en/latest/). For new work, use deepgeodemo; for reproducing this paper, use the vendored copy.
 
 ## Data sources
 

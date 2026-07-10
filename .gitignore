@@ -17,3 +17,7 @@ notebooks/logs_lad/**
 
 # Backups
 *.bak*
+
+# Vendored package build artifacts
+torchgeodemo/build/
+torchgeodemo/src/*.egg-info/
