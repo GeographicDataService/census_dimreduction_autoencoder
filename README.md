@@ -72,8 +72,8 @@ The actively maintained release of this package is **deepgeodemo**: [https://dee
 ### `data/geofiles/`
 | File | Source |
 |---|---|
-| `Output_Areas_(December_2021)_Boundaries_EW_BFE_(V9)_and_RUC.geojson` | OA Dec 2021 boundaries (BFE V9) joined with the 2021 Rural-Urban Classification; both from the [ONS Open Geography Portal](https://geoportal.statistics.gov.uk) |
-| `Middle_layer_Super_Output_Areas_(December_2021)_Boundaries_EW_BFE_(V8)_and_RUC/` (shapefile) | as above, MSOA Dec 2021 boundaries (BFE V8) |
+| `Output_Areas_(December_2021)_Boundaries_EW_BFE_(V9)_and_RUC.geojson` | ONS Open Geography Portal: ["Output Areas (December 2021) Boundaries EW BFE (V9) and Rural Urban Classification"](https://www.data.gov.uk/dataset/b60ed838-a272-4d21-9d13-f1ac5ffe9943/output-areas-december-2021-boundaries-ew-bfe-v9-and-rural-urban-classification2) (GeoJSON) |
+| `Middle_layer_Super_Output_Areas_(December_2021)_Boundaries_EW_BFE_(V8)_and_RUC/` | ONS Open Geography Portal: ["Middle layer Super Output Areas (December 2021) Boundaries EW BFE (V8) and Rural Urban Classification"](https://www.data.gov.uk/dataset/7612c54f-a235-4e3b-89fc-c2085cc16b17/middle-layer-super-output-areas-december-2021-boundaries-ew-bfe-v8-and-rural-urban-classificati2) (Shapefile) |
 | `Lower_layer_Super_Output_Areas_Dec_2011_Boundaries_Full_Clipped_BFC_EW_V3_2022_*.gpkg` | [ONS Open Geography Portal](https://geoportal.statistics.gov.uk) |
 | `Output_Area_to_Lower_layer_Super_Output_Area_to_Middle_layer_Super_Output_Area_to_Local_Authority_District_(December_2021)_Lookup_in_England_and_Wales_v3.csv` | [ONS Open Geography Portal](https://geoportal.statistics.gov.uk) |
 | `uk_imd2019.csv` | [Index of Multiple Deprivation 2019](https://data.geods.ac.uk/dataset/index-of-multiple-deprivation-imd) |
