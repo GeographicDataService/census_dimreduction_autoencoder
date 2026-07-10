@@ -1,5 +1,9 @@
-# Heavy data — symlinked from the archive repo locally; see README for sources
-/data
+# Heavy data — symlinked from the archive repo locally; see README for sources.
+# Exception: the simplified OA boundaries ship with the repo.
+/data/**
+!/data/geofiles/
+/data/geofiles/*
+!/data/geofiles/oabounds_2021approx.parquet
 /AE_outputs
 
 # Environments & caches

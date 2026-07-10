@@ -77,6 +77,7 @@ The actively maintained release of this package is **deepgeodemo**: [https://dee
 | `Lower_layer_Super_Output_Areas_Dec_2011_Boundaries_Full_Clipped_BFC_EW_V3_2022_*.gpkg` | [ONS Open Geography Portal](https://geoportal.statistics.gov.uk) |
 | `Output_Area_to_Lower_layer_Super_Output_Area_to_Middle_layer_Super_Output_Area_to_Local_Authority_District_(December_2021)_Lookup_in_England_and_Wales_v3.csv` | [ONS Open Geography Portal](https://geoportal.statistics.gov.uk) |
 | `uk_imd2019.csv` | [Index of Multiple Deprivation 2019](https://data.geods.ac.uk/dataset/index-of-multiple-deprivation-imd) |
+| `oabounds_2021approx.parquet` | included in this repo — simplified version of the full OA boundaries above, for plotting |
 
 ### `data/OAC/`
 | File | Source |
