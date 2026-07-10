@@ -1,0 +1,49 @@
+[project]
+name = "census-dimreduction-autoencoder"
+version = "0.1.0"
+description = "Notebooks reproducing 'Deep Learning Composite Neighbourhood Structure Using Autoencoders'."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    # data / geo
+    "geopandas>=1.0",
+    "pyarrow>=17.0",
+    "pandas>=2.2",
+    "numpy>=2.0",
+    "scipy>=1.13",
+    "scikit-learn>=1.5",
+    "joblib>=1.4",
+    # spatial analysis (PySAL)
+    "esda>=2.6",
+    "libpysal>=4.12",
+    # dimensionality reduction / viz
+    "umap-learn>=0.5.6",
+    # pin modern numba/llvmlite so uv doesn't backtrack to a py<3.10 build
+    "numba>=0.61",
+    "llvmlite>=0.44",
+    "matplotlib>=3.9",
+    "seaborn>=0.13",
+    "tqdm>=4.67",
+    # deep learning (Blackwell / CUDA 12.8)
+    "torch>=2.7",
+    "torchvision",
+    "torchaudio",
+    # local autoencoder package
+    "torchgeodemo",
+    # notebook runtime
+    "ipykernel>=6.29",
+    "jupyterlab>=4.2",
+    "plotly>=6.8.0",
+    "kaleido>=1.3.0",
+]
+
+[tool.uv.sources]
+torchgeodemo = { path = "../torchgeodemo-pkg-dev" }
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
+torchaudio = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true

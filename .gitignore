@@ -1,0 +1,19 @@
+# Heavy data — symlinked from the archive repo locally; see README for sources
+/data
+/AE_outputs
+
+# Environments & caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Regenerated outputs (keep dir structure via .gitkeep — notebooks expect the dirs to exist)
+notebooks/plots/**
+!notebooks/plots/**/
+!notebooks/plots/**/.gitkeep
+notebooks/logs_lad/**
+!notebooks/logs_lad/.gitkeep
+
+# Backups
+*.bak*

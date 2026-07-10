@@ -1,0 +1,10 @@
+geopandas
+tqdm
+matplotlib
+scikit-learn
+seaborn
+pyarrow
+#Autoencoder package
+torchgeodemo-pkg-dev
+
+
