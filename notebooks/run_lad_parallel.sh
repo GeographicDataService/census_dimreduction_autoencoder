@@ -4,7 +4,7 @@
 # Resumable: re-running skips folds already in the checkpoints.
 #
 # Usage:   ./run_lad_parallel.sh [MAX_PARALLEL]
-#   MAX_PARALLEL defaults to 16 (all 8 dims x 2 repeats at once).
+#   MAX_PARALLEL defaults to 16 (all 8 dims x 1 repeat at once).
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -12,7 +12,7 @@ PY="../.venv/bin/python"
 PAR="${1:-16}"
 DIMS=(128 100 64 32 16 8 4 2)
 # Override the repeats with the REPEATS env var, e.g. REPEATS="2 3 4 5 6 7 8 9"
-read -ra REPEATS <<< "${REPEATS:-0 1}"
+read -ra REPEATS <<< "${REPEATS:-0}"
 mkdir -p logs_lad
 
 echo "Launching LAD spatial-CV: ${#DIMS[@]} dims x ${#REPEATS[@]} repeats = $(( ${#DIMS[@]} * ${#REPEATS[@]} )) workers, up to $PAR at once"

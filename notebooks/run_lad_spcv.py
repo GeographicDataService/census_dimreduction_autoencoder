@@ -242,7 +242,7 @@ def main():
     args = ap.parse_args()
 
     dims    = args.dims    if args.dims    else ([args.dim]    if args.dim    is not None else [128, 100, 64, 32, 16, 8, 4, 2])
-    repeats = args.repeats if args.repeats else ([args.repeat] if args.repeat is not None else list(range(N_REPEATS)))
+    repeats = args.repeats if args.repeats else ([args.repeat] if args.repeat is not None else [0]) 
 
     for d in (OUTPUT_DIR, OUTPUT_DIR / "data", OUTPUT_DIR / "models", OUTPUT_DIR / "yamls"):
         os.makedirs(d, exist_ok=True)
