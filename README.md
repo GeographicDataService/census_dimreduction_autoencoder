@@ -53,7 +53,7 @@ Python 3.12. `uv sync` reproduces the exact paper environment, including CUDA-en
 PyTorch from the CUDA 12.8 wheel index.
 
 ```bash
-git clone https://github.com/ogoodwin505/census_dimreduction_autoencoder.git
+git clone https://github.com/GeographicDataService/census_dimreduction_autoencoder.git
 cd census_dimreduction_autoencoder
 uv sync          # creates .venv from uv.lock (exact paper environment)
 ```
