@@ -1,7 +1,7 @@
 [project]
 name = "census-dimreduction-autoencoder"
 version = "0.1.0"
-description = "Notebooks reproducing 'Deep Learning Composite Neighbourhood Structure Using Autoencoders'."
+description = "Notebooks reproducing 'Capturing Non-linear Neighbourhood Structure: An Autoencoder Approach to Census-based Dimensionality Reduction for Residential Differentiation'."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
