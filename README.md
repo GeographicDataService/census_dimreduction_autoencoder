@@ -5,6 +5,8 @@
 Reproduction repository for the paper
 **"Capturing Non-linear Neighbourhood Structure: An Autoencoder Approach to Census-based Dimensionality Reduction for Residential Differentiation"**
 
+<img src="docs/readme_banner.png" alt="Left: 8-cluster geodemographic classification of England and Wales from the 100-dimensional autoencoder embedding. Right: reconstruction RMSE against latent dimension, autoencoder below PCA at every dimension." width="100%">
+
 </div>
 
 
